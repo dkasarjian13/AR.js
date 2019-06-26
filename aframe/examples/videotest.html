@@ -13,15 +13,15 @@
 	<a-scene stats embedded arjs='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 240; canvasHeight: 180'>
 
 		<!-- define the object which gonna be put on this marker  -->
-  <a-assets>
-    <a-asset-item id="tree-obj" src="https://cdn.rawgit.com/dkasarjian13/AR.js/master/aframe/WATCH_JOURNAL.obj"></a-asset-item>
-    <a-asset-item id="tree-mtl" src="/AR.js/aframe/WATCH_JOURNAL.mtl"></a-asset-item>
-  </a-assets>
-
-  <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl scale="0.01 0.01 0.01"></a-entity>
-
+ <a-entity 
+obj-model=”obj: url(
+https://cdn.rawgit.com/dkasarjian13/AR.js/master/aframe/WATCH_JOURNAL.obj); 
+mtl: url(https://cdn.rawgit.com/dkasarjian13/AR.js/aframe/WATCH_JOURNAL.mtl
+)”>
+</a-entity>
 
 		<a-marker-camera preset='hiro'></a-marker-camera>
 	</a-scene>
 </body>
 </html>
+
