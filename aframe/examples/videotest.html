@@ -7,14 +7,14 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - mobile performance in a-frame
 	<br/>
-	TEST 13 <a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
+	TEST 14 <a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div>
 	<!-- enable artoolkit on this scene -->
 	<a-scene stats embedded arjs='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 240; canvasHeight: 180'>
 
 		<!-- define the object which gonna be put on this marker  -->
 	  <a-assets>
-    <a-asset-item id="tree" src="../WATCH_JOURNAL.gltf"></a-asset-item>
+    <a-asset-item id="tree" scale="0.01 0.01 0.01" src="../WATCH_JOURNAL.gltf"></a-asset-item>
   </a-assets>
 
   <a-entity gltf-model="#tree"></a-entity>
