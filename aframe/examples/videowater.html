@@ -1,3 +1,25 @@
-  <a-assets>
-    <video id="penguin-sledding" autoplay loop="true" src="penguin-sledding.mp4"></video>
+
+<!DOCTYPE html>
+<!-- include aframe -->
+<script src="vendor/aframe/build/aframe.js"></script>
+<!-- include aframe-ar.js -->
+<script src="../build/aframe-ar.js"></script>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - mobile performance in a-frame
+	<br/>
+	DONTACT <a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
+</div>
+	<!-- enable artoolkit on this scene -->
+	<a-scene stats embedded arjs='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 240; canvasHeight: 180'>
+
+		<!-- define the object which gonna be put on this marker  -->
+		  <a-assets>
+    <video id="water" autoplay loop="true" src="https://dkasarjian13.github.io/AR.js/aframe/water.mp4"></video>
   </a-assets>
+
+		<a-marker-camera preset='hiro'></a-marker-camera>
+	</a-scene>
+</body>
+</html>
+
