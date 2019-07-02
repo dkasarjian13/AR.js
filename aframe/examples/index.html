@@ -24,6 +24,7 @@
                     document.querySelector('#water').setAttribute('visible', true);
 
                     // Reset the video to the beginning and play it through
+                            this.videoEl.setAttribute('webkit-playsinline', true);
                     vid.currentTime = 0;                    
                     vid.play();
                     
