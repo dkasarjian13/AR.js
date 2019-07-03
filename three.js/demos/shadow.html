@@ -167,14 +167,26 @@ renderer.shadowMap.enabled = true;
 	// markerRoot.add( mesh );
 
 	;(function(){
-		var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16); // make it slightly larger for better view
-		var material	= new THREE.MeshNormalMaterial();
-		var material	= new THREE.MeshLambertMaterial();
-		var mesh	= new THREE.Mesh( geometry, material );
-		mesh.castShadow = true;
-		mesh.receiveShadow = true;
-		mesh.position.y	= 0.7
-		markerRoot.add( mesh );
+		
+				var geometry = new THREE.SphereBufferGeometry( 100, 32, 16 );
+				var shader = FresnelShader;
+				var uniforms = THREE.UniformsUtils.clone( shader.uniforms );
+				uniforms[ "tCube" ].value = textureCube;
+				var material = new THREE.ShaderMaterial( {
+					uniforms: uniforms,
+					vertexShader: shader.vertexShader,
+					fragmentShader: shader.fragmentShader
+				} );
+				for ( var i = 0; i < 500; i ++ ) {
+					var mesh = new THREE.Mesh( geometry, material );
+					mesh.position.x = Math.random() * 10000 - 5000;
+					mesh.position.y = Math.random() * 10000 - 5000;
+					mesh.position.z = Math.random() * 10000 - 5000;
+					mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1;
+					scene.add( mesh );
+					spheres.push( mesh );
+				}
+		
 		// point the directionalLight to the marker
 		directionalLight.target = mesh
 
