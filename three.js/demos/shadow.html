@@ -166,7 +166,7 @@ renderer.shadowMap.enabled = true;
 	// mesh.position.y	= geometry.parameters.height/2
 	// markerRoot.add( mesh );
 	
-		var geometry = new THREE.SphereBufferGeometry( 100, 32, 16 );
+		var geometry = new THREE.SphereBufferGeometry( 0.3,0.1,64,16 );
 				var shader = FresnelShader;
 				var uniforms = THREE.UniformsUtils.clone( shader.uniforms );
 				uniforms[ "tCube" ].value = textureCube;
