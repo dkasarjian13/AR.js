@@ -16,7 +16,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.13</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.14</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
 	//////////////////////////////////////////////////////////////////////////////////
@@ -202,6 +202,9 @@ renderer.shadowMap.enabled = true;
 			sphereMesh.position.x = (Math.random() - .5) *10;
 			sphereMesh.position.z = (Math.random() - .5) *10;
 			markerRoot.add( sphereMesh ); 
+			onRenderFcts.push(function(){
+				sphereMesh.position.x += 0.01;	
+			})
 		})
 		
 		// point the directionalLight to the marker
