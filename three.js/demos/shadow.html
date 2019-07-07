@@ -17,7 +17,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.28</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.29</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
 	//////////////////////////////////////////////////////////////////////////////////
@@ -175,10 +175,11 @@ renderer.shadowMap.enabled = true;
 					vertexShader: shader.vertexShader,
 					fragmentShader: shader.fragmentShader
 				} );
-
-// // var mesh	= new THREE.Mesh( geometry, material );
-// // 	mesh.position.y	= geometry.parameters.height/2
-// // 	markerRoot.add( mesh );
+				var mesh	= new THREE.Mesh( geometry, material );
+		mesh.castShadow = true;
+		mesh.receiveShadow = true;
+		mesh.position.y	= 0.1
+		markerRoot.add( mesh );
 	
 
 
