@@ -15,23 +15,39 @@
 <script src="../demos/shaders/FresnelShader.d.ts"></script>
 <script>THREEx.ArToolkitContext.baseURL = '../'</script>
 <script type="x-shader/x-vertex" id="vertexShader">
+	attribute  float vertexDisplacement;
+	uniform float delta;
+	varying float vOpacity;
+	varying vec3 vUv;
 	void main()
 	{
-		vec4 modelViewPosition= modelViewMatrix * vec4(position, 1.0);
+		vUv= position;
+		vOpacity = vertexDisplacement;
+		vec3 p = position;
+		p.x += sin (vertexDisplacement) * 50.0;
+		p.y += cos (vertexDisplacement) * 50.0;
+		vec4 modelViewPosition= modelViewMatrix * vec4(p, 1.0);
 		gl_Position = projectionMatrix * modelViewPosition;
 	}
 	</script>
 	<script type="x-shader/x-fragment" id="fragmentShader">
-	void main ()
+	uniform float delta;
+	varying float vOpacity;
+	varying vec3 vUv;
+
+		void main ()
 	{
-		gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+		float r = 1.0 + cos(vUv.x * delta);
+		float g = .05 + sin(delta) * 0.5;
+		float b = 0.0;
+		gl_FragColor = vec4(r, g, b, vOpacity);
 	}
 	</script>
 
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.38</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.39</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
 
@@ -182,8 +198,11 @@ renderer.shadowMap.enabled = true;
 	// var mesh	= new THREE.Mesh( geometry, material );
 	// mesh.position.y	= geometry.parameters.height/2
 	// markerRoot.add( mesh );
-
+var uniforms = {
+	delta: {value: 0}
+};
 var material = new THREE.ShaderMaterial({
+uniforms: uniforms,
 vertexShader: document.getElementById ('vertexShader').textContent,
 fragmentShader: document.getElementById ('fragmentShader').textContent,
 });
@@ -191,7 +210,7 @@ fragmentShader: document.getElementById ('fragmentShader').textContent,
 
 
 	(function(){
-			var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16); // make it slightly larger for better view
+			var geometry	= new THREE.TorusKnotBufferGeometry(0.3,0.1,64,16); // make it slightly larger for better view
 			//var shader = FresnelShader;
 		//var material	= new THREE.MeshNormalMaterial();
 		//var material	= new THREE.MeshLambertMaterial();
@@ -201,7 +220,7 @@ fragmentShader: document.getElementById ('fragmentShader').textContent,
 		mesh.position.y	= 0.1
 		markerRoot.add( mesh );
 		
-		var geometry2 = new THREE.SphereGeometry(.2,32,32);
+		var geometry2 = new THREE.SphereBufferGeometry(.2,32,32);
 		var mesh2 = new THREE.Mesh (geometry2, material);
 		mesh2.castShadow= true;
 		mesh2.receiveShadow = true;
@@ -226,7 +245,7 @@ fragmentShader: document.getElementById ('fragmentShader').textContent,
 
 
 		var spheres = new Array(30).fill(null).map(function() {
-			return new THREE.SphereGeometry(.2, 32, 32);
+			return new THREE.SphereBufferGeometry(.2, 32, 32);
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material);
@@ -255,12 +274,20 @@ fragmentShader: document.getElementById ('fragmentShader').textContent,
 		var material = new THREE.ShadowMaterial();
 		material.opacity = 0.7; //! bug in threejs. can't set in constructor
 
-		var geometry = new THREE.PlaneGeometry(3, 3)
+		var geometry = new THREE.PlaneBufferGeometry(3, 3)
 		var planeMesh = new THREE.Mesh( geometry, material);
 		planeMesh.receiveShadow = true;
 		planeMesh.depthWrite = false;
 		planeMesh.rotation.x = -Math.PI/2
 		markerRoot.add(planeMesh);
+
+
+	var vertexDisplacement = new Float32Array(geometry.attributes.position.count);
+	for ( var i = 0; i < vertexDisplacement.length; i += 1) {
+		vertexDisplacement[i] = Math.sin(i);
+	}
+
+	geometry.addAttribute('vertexDisplacement', new THREE.BufferAttribute(vertexDisplacement, 1))
 	})()
 
 
