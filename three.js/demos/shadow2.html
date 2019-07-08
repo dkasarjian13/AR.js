@@ -18,10 +18,9 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.54</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.2</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
-
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Init
 	//////////////////////////////////////////////////////////////////////////////////
@@ -171,25 +170,21 @@ renderer.shadowMap.enabled = true;
 	// markerRoot.add( mesh );
 
 
-
 	
 
 
 	(function(){
-			var geometry	= new THREE.TorusKnotBufferGeometry(0.3,0.1,64,16); // make it slightly larger for better view
-			var material = new THREE.PointsMaterial({color: 0xF3FFE2});
-var points = new THREE.Points(geometry, material);
-		//var material	= new THREE.MeshLambertMaterial();
-
-};
-
+			var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16); // make it slightly larger for better view
+			//var shader = FresnelShader;
+		var material	= new THREE.MeshNormalMaterial();
+		var material	= new THREE.MeshLambertMaterial();
 		var mesh	= new THREE.Mesh( geometry, material );
 		mesh.castShadow = true;
 		mesh.receiveShadow = true;
 		mesh.position.y	= 0.1
 		markerRoot.add( mesh );
 		
-		var geometry2 = new THREE.SphereBufferGeometry(.2,32,32);
+		var geometry2 = new THREE.SphereGeometry(.2,32,32);
 		var mesh2 = new THREE.Mesh (geometry2, material);
 		mesh2.castShadow= true;
 		mesh2.receiveShadow = true;
@@ -213,8 +208,8 @@ var points = new THREE.Points(geometry, material);
 
 
 
-		var spheres = new Array(30).fill(null).map(function() {
-			return new THREE.SphereBufferGeometry(.2, 32, 32);
+		var spheres = new Array(10).fill(null).map(function() {
+			return new THREE.SphereGeometry(.2, 32, 32);
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material);
@@ -226,6 +221,9 @@ var points = new THREE.Points(geometry, material);
 			sphereMesh.position.x = (Math.random() - .5) *5;
 			sphereMesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( sphereMesh ); 
+			onRenderFcts.push(function(){
+				sphereMesh.position.x += 0.01;	
+			})
 		})
 		
 		// point the directionalLight to the marker
@@ -240,12 +238,14 @@ var points = new THREE.Points(geometry, material);
 		var material = new THREE.ShadowMaterial();
 		material.opacity = 0.7; //! bug in threejs. can't set in constructor
 
-		var geometry = new THREE.PlaneBufferGeometry(3, 3)
+		var geometry = new THREE.PlaneGeometry(3, 3)
 		var planeMesh = new THREE.Mesh( geometry, material);
 		planeMesh.receiveShadow = true;
 		planeMesh.depthWrite = false;
 		planeMesh.rotation.x = -Math.PI/2
 		markerRoot.add(planeMesh);
+	})()
+
 
 
 	//////////////////////////////////////////////////////////////////////////////////
@@ -256,8 +256,8 @@ var points = new THREE.Points(geometry, material);
 	// render the scene
 	onRenderFcts.push(function(){
 		renderer.render( scene, camera );
-		delta += 0.1;
-
+		stats.update();
+	})
 
 	// run the rendering loop
 	var lastTimeMsec= null
