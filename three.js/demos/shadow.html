@@ -47,7 +47,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.59</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.60</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
 
@@ -278,11 +278,13 @@ fragmentShader: document.getElementById ('fragmentShader').textContent,
 			sphereMesh.position.y = Math.random() - .5 * 6;
 			sphereMesh.position.x = (Math.random() - .5) *6;
 			sphereMesh.position.z = (Math.random() - .5) *6;
-			mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1;
+			sphereMesh.scale.x = sphereMesh.y = sphereMesh.z = Math.random() * 3 + 1;
 			markerRoot.add( sphereMesh ); 
 			 onRenderFcts.push(function(){
-				spheres.push( mesh );
-			// 	sphereMesh.position.x += 0.01;	
+				//spheres.push( mesh );
+			 	sphereMesh.position.x += 0.01;
+				 sphereMesh.position.y += 0.01;
+
 			 })
 		})
 		
@@ -291,7 +293,6 @@ fragmentShader: document.getElementById ('fragmentShader').textContent,
 
 		onRenderFcts.push(function(){
 			mesh.rotation.x += 0.04;
-			
 		})
 
 		// add a transparent ground-plane shadow-receiver
