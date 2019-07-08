@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<!-- three.js library -->
+<script src='vendor/three.js/build/three.js'></script>
+<script src="vendor/three.js/examples/js/libs/stats.min.js"></script>
+<!-- jsartookit -->
+<script src="../vendor/jsartoolkit5/build/artoolkit.min.js"></script>
+<script src="../vendor/jsartoolkit5/js/artoolkit.api.js"></script>
+<!-- include threex.artoolkit -->
+<script src="../src/threex/threex-artoolkitsource.js"></script>
+<script src="../src/threex/threex-artoolkitcontext.js"></script>
+<script src="../src/threex/threex-arbasecontrols.js"></script>
+<script src="../src/threex/threex-armarkercontrols.js"></script>
+<script src="../demos/shaders/FresnelShader.js"></script>
+<script src="../demos/shaders/FresnelShader.d.ts"></script>
+<script>THREEx.ArToolkitContext.baseURL = '../'</script>
+<script type="x-shader/x-vertex" id="vertexShader">
+	attribute  float vertexDisplacement;
+	uniform float delta;
+	varying float vOpacity;
+	varying vec3 vUv;
+	void main()
+	{
+		vUv= position;
+		vOpacity = vertexDisplacement;
+		vec3 p = position;
+		p.x += sin (vertexDisplacement) * 0.1;
+		p.y += cos (vertexDisplacement) * 0.1;
+		vec4 modelViewPosition= modelViewMatrix * vec4(p, 1.0);
+		gl_Position = projectionMatrix * modelViewPosition;
+	}
+	</script>
+	<script type="x-shader/x-fragment" id="fragmentShader">
+	uniform float delta;
+	varying float vOpacity;
+	varying vec3 vUv;
+
+		void main ()
+	{
+		float r = 1.0 + cos(vUv.x * delta);
+		float g = .05 + sin(delta) * 0.5;
+		float b = 0.0;
+		gl_FragColor = vec4(r, g, b, vOpacity);
+	}
+	</script>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
+	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
+	<br/>
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.54</a> and 
+	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
+</div><script>
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		Init
+	//////////////////////////////////////////////////////////////////////////////////
+	//import { FresnelShader } from '../shaders/FresnelShader.js';
+	// init renderer
+	var renderer	= new THREE.WebGLRenderer({
+		// antialias	: true,
+		alpha: true
+	});
+	
+// renderer.shadowMap.type = THREE.BasicShadowMap
+// renderer.shadowMap.type = THREE.PCFShadowMap;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+renderer.shadowMap.enabled = true;
+
+	renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+	// renderer.setPixelRatio( 1/2 );
+
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.domElement.style.position = 'absolute'
+	renderer.domElement.style.top = '0px'
+	renderer.domElement.style.left = '0px'
+	document.body.appendChild( renderer.domElement );
+
+	// array of functions for the rendering loop
+	var onRenderFcts= [];
+
+	// init scene and camera
+	var scene	= new THREE.Scene();
+
+	var ambient = new THREE.AmbientLight( 0x666666 );
+	scene.add( ambient );
+
+	var directionalLight = new THREE.DirectionalLight( 'white' );
+	directionalLight.position.set( 1, 2, 0.3 ).setLength(2)
+	directionalLight.shadow.mapSize.set(128,128)
+	directionalLight.shadow.camera.bottom = -0.6
+	directionalLight.shadow.camera.top = 0.6
+	directionalLight.shadow.camera.right = 0.6
+	directionalLight.shadow.camera.left = -0.6
+	directionalLight.castShadow = true;
+	// scene.add(new THREE.CameraHelper( directionalLight.shadow.camera ))
+	scene.add( directionalLight );
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		Initialize a basic camera
+	//////////////////////////////////////////////////////////////////////////////////
+
+	// Create a camera
+	var camera = new THREE.Camera();
+	scene.add(camera);
+
+	////////////////////////////////////////////////////////////////////////////////
+	//          handle arToolkitSource
+	////////////////////////////////////////////////////////////////////////////////
+
+	var arToolkitSource = new THREEx.ArToolkitSource({
+		// to read from the webcam
+		sourceType : 'webcam',
+
+		// to read from an image
+		// sourceType : 'image',
+		// sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/images/img.jpg',
+
+		// to read from a video
+		// sourceType : 'video',
+		// sourceUrl : THREEx.ArToolkitContext.baseURL + '../data/videos/headtracking.mp4',
+	})
+
+	arToolkitSource.init(function onReady(){
+		onResize()
+	})
+	
+	// handle resize
+	window.addEventListener('resize', function(){
+		onResize()
+	})
+	function onResize(){
+		arToolkitSource.onResize()	
+		arToolkitSource.copySizeTo(renderer.domElement)	
+		if( arToolkitContext.arController !== null ){
+			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)	
+		}	
+	}
+	////////////////////////////////////////////////////////////////////////////////
+	//          initialize arToolkitContext
+	////////////////////////////////////////////////////////////////////////////////
+
+
+	// create atToolkitContext
+	var arToolkitContext = new THREEx.ArToolkitContext({
+		cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
+		detectionMode: 'mono',
+		// maxDetectionRate: 30,
+		// canvasWidth: 80*3,
+		// canvasHeight: 60*3,
+	})
+	// initialize it
+	arToolkitContext.init(function onCompleted(){
+		// copy projection matrix to camera
+		camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
+	})
+
+	// update artoolkit on every frame
+	onRenderFcts.push(function(){
+		if( arToolkitSource.ready === false )	return
+
+		arToolkitContext.update( arToolkitSource.domElement )
+		
+		// update scene.visible if the marker is seen
+		scene.visible = camera.visible
+	})
+
+
+	////////////////////////////////////////////////////////////////////////////////
+	//          Create a ArMarkerControls
+	////////////////////////////////////////////////////////////////////////////////
+
+	var markerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
+		type : 'pattern',
+		patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro',
+		// patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.kanji',
+		// as we controls the camera, set changeMatrixMode: 'cameraTransformMatrix'
+		changeMatrixMode: 'cameraTransformMatrix'
+	})
+	// as we do changeMatrixMode: 'cameraTransformMatrix', start with invisible scene
+	scene.visible = false
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		add an object in the scene
+	//////////////////////////////////////////////////////////////////////////////////
+
+	
+
+	var markerRoot = new THREE.Group
+	scene.add(markerRoot);
+	
+	//add a torus knot
+	// var geometry	= new THREE.CubeGeometry(1,1,1);
+	// var material	= new THREE.MeshNormalMaterial({
+	// 	transparent : true,
+	// 	opacity: 0.5,
+	// 	side: THREE.DoubleSide
+	// });
+	// var mesh	= new THREE.Mesh( geometry, material );
+	// mesh.position.y	= geometry.parameters.height/2
+	// markerRoot.add( mesh );
+
+
+
+	
+
+
+	(function(){
+			var geometry	= new THREE.TorusKnotBufferGeometry(0.3,0.1,64,16); // make it slightly larger for better view
+			//var shader = FresnelShader;
+		//var material	= new THREE.MeshNormalMaterial();
+		//var material	= new THREE.MeshLambertMaterial();
+		var customUniforms = {
+	delta: {value: 0}
+};
+var material = new THREE.ShaderMaterial({
+uniforms: customUniforms,
+vertexShader: document.getElementById ('vertexShader').textContent,
+fragmentShader: document.getElementById ('fragmentShader').textContent,
+});
+		var mesh	= new THREE.Mesh( geometry, material );
+		mesh.castShadow = true;
+		mesh.receiveShadow = true;
+		mesh.position.y	= 0.1
+		markerRoot.add( mesh );
+		
+		var geometry2 = new THREE.SphereBufferGeometry(.2,32,32);
+		var mesh2 = new THREE.Mesh (geometry2, material);
+		mesh2.castShadow= true;
+		mesh2.receiveShadow = true;
+		mesh2.position.y	= 0.8
+		mesh2.position.x	= 0.3
+		mesh2.position.z	= 0.5
+		markerRoot.add( mesh2 ); 
+
+		// var geometry3 = new THREE.SphereGeometry( 1, 32, 32 );
+		// 		var shader = FresnelShader;
+		// 		var material2 = new THREE.ShaderMaterial( {
+		// 			uniforms: uniforms,
+		// 			vertexShader: shader.vertexShader,
+		// 			fragmentShader: shader.fragmentShader
+		// 		} );
+		// 		var mesh3	= new THREE.Mesh( geometry3, material2 );
+		// mesh3.castShadow = true;
+		// mesh3.receiveShadow = true;
+		// mesh3.position.y	= 0.1
+		// markerRoot.add( mesh3 );
+
+
+
+		var spheres = new Array(30).fill(null).map(function() {
+			return new THREE.SphereBufferGeometry(.2, 32, 32);
+		})
+		var spheresMeshes = spheres.map(function (sphere) {
+			return new THREE.Mesh (sphere, material);
+		})
+		spheresMeshes.forEach(function(sphereMesh) {
+			sphereMesh.castShadow= true;
+			sphereMesh.receiveShadow = true;
+			sphereMesh.position.y = Math.random();
+			sphereMesh.position.x = (Math.random() - .5) *5;
+			sphereMesh.position.z = (Math.random() - .5) *5;
+			markerRoot.add( sphereMesh ); 
+			// onRenderFcts.push(function(){
+			// 	sphereMesh.position.x += 0.01;	
+			// })
+		})
+		
+		// point the directionalLight to the marker
+		directionalLight.target = mesh
+
+		onRenderFcts.push(function(){
+			mesh.rotation.x += 0.04;
+			
+		})
+
+		// add a transparent ground-plane shadow-receiver
+		var material = new THREE.ShadowMaterial();
+		material.opacity = 0.7; //! bug in threejs. can't set in constructor
+
+		var geometry = new THREE.PlaneBufferGeometry(3, 3)
+		var planeMesh = new THREE.Mesh( geometry, material);
+		planeMesh.receiveShadow = true;
+		planeMesh.depthWrite = false;
+		planeMesh.rotation.x = -Math.PI/2
+		markerRoot.add(planeMesh);
+
+
+	var vertexDisplacement = new Float32Array(geometry.attributes.position.count);
+	for ( var i = 0; i < vertexDisplacement.length; i ++) {
+		vertexDisplacement[i] = Math.sin(i);
+	}
+
+	geometry.addAttribute('vertexDisplacement', new THREE.BufferAttribute(vertexDisplacement, 1))
+	})()
+
+	var delta= 0;
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		render the whole thing on the page
+	//////////////////////////////////////////////////////////////////////////////////
+	var stats = new Stats();
+	document.body.appendChild( stats.dom );
+	// render the scene
+	onRenderFcts.push(function(){
+		renderer.render( scene, camera );
+		delta += 0.1;
+
+//uniform
+mesh.material.uniforms.delta.value = 0.5 + Math.sin(delta) * 0.5;
+
+//attribute
+for (var i = 0; i < vertexDisplacement.length; i ++) {
+	vertexDisplacement[i] = 0.5 + Math.sin(i + delta) * 0.25;
+}
+mesh.geometry.attributes.vertexDisplacement.needsUpdate = true;
+		stats.update();
+	})
+
+	// run the rendering loop
+	var lastTimeMsec= null
+	requestAnimationFrame(function animate(nowMsec){
+		// keep looping
+		requestAnimationFrame( animate );
+		// measure time
+		lastTimeMsec	= lastTimeMsec || nowMsec-1000/60
+		var deltaMsec	= Math.min(200, nowMsec - lastTimeMsec)
+		lastTimeMsec	= nowMsec
+		// call each update function
+		onRenderFcts.forEach(function(onRenderFct){
+			onRenderFct(deltaMsec/1000, nowMsec/1000)
+		})
+	})
+</script></body>
