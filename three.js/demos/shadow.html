@@ -24,8 +24,8 @@
 		vUv= position;
 		vOpacity = vertexDisplacement;
 		vec3 p = position;
-		p.x += sin (vertexDisplacement) * 0.8;
-		p.y += cos (vertexDisplacement) * 0.8;
+		p.x += sin (vertexDisplacement) * 1.0;
+		p.y += cos (vertexDisplacement) * 1.0;
 		vec4 modelViewPosition= modelViewMatrix * vec4(p, 1.0);
 		gl_Position = projectionMatrix * modelViewPosition;
 	}
@@ -47,7 +47,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.47</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.48</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
 
