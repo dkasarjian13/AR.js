@@ -47,7 +47,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.57</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.58</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
 
@@ -267,7 +267,7 @@ fragmentShader: document.getElementById ('fragmentShader').textContent,
 
 
 		var spheres = new Array(10).fill(null).map(function() {
-			return new THREE.SphereBufferGeometry(1.5, 32, 32);
+			return new THREE.SphereBufferGeometry(.5, 32, 32);
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material);
