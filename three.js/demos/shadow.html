@@ -18,9 +18,23 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.36</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.37</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
+
+	<script type="x-shader/x-vertex" id="vertexShader">
+	void main()
+	{
+		vec4 modelViewPosition= modelViewMatrix * vec4(position, 1.0);
+		gl_Position = projectionMatrix * modelViewPosition;
+	}
+	</script>
+	<script type="x-shader/x-fragment" id="fragmentShader">
+	void main ()
+	{
+		gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+	}
+	</script>
 	//////////////////////////////////////////////////////////////////////////////////
 	//		Init
 	//////////////////////////////////////////////////////////////////////////////////
@@ -169,14 +183,17 @@ renderer.shadowMap.enabled = true;
 	// mesh.position.y	= geometry.parameters.height/2
 	// markerRoot.add( mesh );
 
-
+var material = new THREE.ShaderMaterial({
+vertexShader: document.getElementById ('vertexShader').textContent,
+fragmentShader: document.getElementById ('fragmentShader').textContent,
+});
 	
 
 
 	(function(){
 			var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16); // make it slightly larger for better view
 			//var shader = FresnelShader;
-		var material	= new THREE.MeshNormalMaterial();
+		//var material	= new THREE.MeshNormalMaterial();
 		//var material	= new THREE.MeshLambertMaterial();
 		var mesh	= new THREE.Mesh( geometry, material );
 		mesh.castShadow = true;
