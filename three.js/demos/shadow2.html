@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank">AR.js</a> - three.js mobile performance
 	<br/>
-	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.6</a> and 
+	Code by <a href="https://twitter.com/snigelpaogat" target='_blank'>Fredrik Blomqvist 0.0.7</a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'>@jerome_etienne</a>
 </div><script>
 	//////////////////////////////////////////////////////////////////////////////////
@@ -179,8 +179,11 @@ renderer.shadowMap.enabled = true;
 		// var material	= new THREE.MeshNormalMaterial();
 		// var material	= new THREE.MeshLambertMaterial();
 
-		var material = new THREE.SpriteMaterial({map: "../demos/texturemaptest.png"});
-var sprite = new THREE.Sprite(material);
+		var material = new THREE.LineDashedMaterial({dashSize: 2, gapSize: 2});
+geometry.computeLineDistances();
+
+var line = new THREE.Line(geometry, material);
+
 		var mesh	= new THREE.Mesh( geometry, material );
 		mesh.castShadow = true;
 		mesh.receiveShadow = true;
