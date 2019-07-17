@@ -176,12 +176,17 @@ renderer.shadowMap.enabled = true;
 
 
 	(function(){
-			var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16); // make it slightly larger for better view
+		var geometry = new THREE.TorusGeometry( .4, 0.1, 64, 16 );
+var material = new THREE.MeshNormalMaterial();
+var torus = new THREE.Mesh( geometry, material );
+scene.add( torus );
+
+			// var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16); // make it slightly larger for better view
 			//var shader = FresnelShader;
 		// var material	= new THREE.MeshNormalMaterial();
 		// var material	= new THREE.MeshLambertMaterial();
 
-		var material = new THREE.LineDashedMaterial({dashSize: 2, gapSize: 2});
+		// var material = new THREE.LineDashedMaterial({dashSize: 2, gapSize: 2});
 geometry.computeLineDistances();
 
 var line = new THREE.Line(geometry, material);
