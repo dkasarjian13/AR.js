@@ -234,7 +234,7 @@ var line = new THREE.Line(geometry, material);
 
 
 		var spheres = new Array(10).fill(null).map(function() {
-			return new THREE.TorusGeometry(.2, 32, 32);
+			return new THREE.TorusGeometry(.2, .6, 32, 32);
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material);
