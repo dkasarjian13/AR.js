@@ -176,7 +176,7 @@ renderer.shadowMap.enabled = true;
 
 
 	(function(){
-		var geometry = new THREE.TorusGeometry( .4, 0.1, 64, 16 );
+		var geometry = new THREE.TorusGeometry( 1, 0.1, 64, 16 );
 var material = new THREE.MeshNormalMaterial();
 var torus = new THREE.Mesh( geometry, material );
 scene.add( torus );
@@ -230,12 +230,12 @@ var line = new THREE.Line(geometry, material);
 		spheresMeshes.forEach(function(sphereMesh) {
 			sphereMesh.castShadow= true;
 			sphereMesh.receiveShadow = true;
-			sphereMesh.position.y = Math.random();
-			sphereMesh.position.x = (Math.random() - .5) *5;
-			sphereMesh.position.z = (Math.random() - .5) *5;
+			// sphereMesh.position.y = Math.random();
+			// sphereMesh.position.x = (Math.random() - .5) *5;
+			// sphereMesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( sphereMesh ); 
 			onRenderFcts.push(function(){
-				sphereMesh.position.x += 0.01;	
+				// sphereMesh.position.x += 0.01;	
 			})
 		})
 		
