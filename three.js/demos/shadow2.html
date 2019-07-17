@@ -183,6 +183,16 @@ renderer.shadowMap.enabled = true;
 		var torus = new THREE.Mesh( geometry, material );
 		scene.add( torus );
 
+		var spriteMaterial = new THREE.SpriteMaterial( 
+	{ 
+		map: new THREE.ImageUtils.loadTexture( 'images/glow.png' ), 
+		useScreenCoordinates: false, alignment: THREE.SpriteAlignment.center,
+		color: 0x0000ff, transparent: false, blending: THREE.AdditiveBlending
+	});
+	var sprite = new THREE.Sprite( spriteMaterial );
+	sprite.scale.set(200, 200, 1.0);
+	mesh.add(sprite); // this centers the glow at the mesh
+
 			// var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16); // make it slightly larger for better view
 			//var shader = FresnelShader;
 		// var material	= new THREE.MeshNormalMaterial();
@@ -223,7 +233,7 @@ var line = new THREE.Line(geometry, material);
 
 
 
-		var spheres = new Array(10).fill(null).map(function() {
+		var spheres = new Array(50).fill(null).map(function() {
 			return new THREE.SphereGeometry(.2, 32, 32);
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
@@ -233,8 +243,8 @@ var line = new THREE.Line(geometry, material);
 			sphereMesh.castShadow= true;
 			sphereMesh.receiveShadow = true;
 			sphereMesh.position.y = Math.random();
-			sphereMesh.position.x = (Math.random() - .5) *5;
-			sphereMesh.position.z = (Math.random() - .5) *5;
+			sphereMesh.position.x = (Math.random() - .1) *5;
+			sphereMesh.position.z = (Math.random() - .1) *5;
 			markerRoot.add( sphereMesh ); 
 			onRenderFcts.push(function(){
 				// sphereMesh.position.x += 0.01;	
