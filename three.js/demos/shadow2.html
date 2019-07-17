@@ -63,7 +63,7 @@ renderer.shadowMap.enabled = true;
 	directionalLight.shadow.camera.top = 0.6
 	directionalLight.shadow.camera.right = 0.6
 	directionalLight.shadow.camera.left = -0.6
-	directionalLight.intensity= -2.0
+	directionalLight.intensity= -1.0
 	directionalLight.castShadow = true;
 	// scene.add(new THREE.CameraHelper( directionalLight.shadow.camera ))
 	scene.add( directionalLight );
@@ -234,7 +234,7 @@ var line = new THREE.Line(geometry, material);
 
 
 		var spheres = new Array(10).fill(null).map(function() {
-			return new THREE.SphereGeometry(.2, 32, 32);
+			return new THREE.TorusGeometry(.2, 32, 32);
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material);
