@@ -243,8 +243,8 @@ var line = new THREE.Line(geometry, material);
 			sphereMesh.castShadow= true;
 			sphereMesh.receiveShadow = true;
 			sphereMesh.position.y = Math.random();
-			sphereMesh.position.x = (Math.random() - .8) *5;
-			sphereMesh.position.z = (Math.random() - .8) *5;
+			sphereMesh.position.x = (Math.random() - .5) *5;
+			sphereMesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( sphereMesh ); 
 			onRenderFcts.push(function(){
 				// sphereMesh.position.x += 0.01;	
