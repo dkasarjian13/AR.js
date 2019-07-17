@@ -177,9 +177,9 @@ renderer.shadowMap.enabled = true;
 
 	(function(){
 		var geometry = new THREE.TorusGeometry( .8, 0.1, 64, 16 );
-		var material	= new THREE.MeshLambertMaterial(
-			.emissive.color: 0xFF0000
-		);
+		var material	= new THREE.MeshLambertMaterial({
+			.emissive: 0xFF0000
+		});
 var torus = new THREE.Mesh( geometry, material );
 scene.add( torus );
 
