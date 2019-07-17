@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	5 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	6 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -201,22 +201,22 @@ renderer.shadowMap.enabled = true;
 		// var material = new THREE.LineDashedMaterial({dashSize: 2, gapSize: 2});
 geometry.computeLineDistances();
 
-// var line = new THREE.Line(geometry, material);
+var line = new THREE.Line(geometry, material);
 
-// 		var mesh	= new THREE.Mesh( geometry, material );
-// 		mesh.castShadow = true;
-// 		mesh.receiveShadow = true;
-// 		mesh.position.y	= 0.1
-// 		markerRoot.add( mesh );
+		var mesh	= new THREE.Mesh( geometry, material );
+		mesh.castShadow = true;
+		mesh.receiveShadow = true;
+		mesh.position.y	= 0.1
+		markerRoot.add( mesh );
 		
-// 		var geometry2 = new THREE.SphereGeometry(.2,32,32);
-// 		var mesh2 = new THREE.Mesh (geometry2, material);
-// 		mesh2.castShadow= true;
-// 		mesh2.receiveShadow = true;
-// 		mesh2.position.y	= 0.8
-// 		mesh2.position.x	= 0.3
-// 		mesh2.position.z	= 0.5
-// 		markerRoot.add( mesh2 ); 
+		var geometry2 = new THREE.TorusGeometry(.2,32,32);
+		var mesh2 = new THREE.Mesh (geometry2, material);
+		mesh2.castShadow= true;
+		mesh2.receiveShadow = true;
+		mesh2.position.y	= 0.8
+		mesh2.position.x	= 0.3
+		mesh2.position.z	= 0.5
+		markerRoot.add( mesh2 ); 
 
 		// var geometry3 = new THREE.SphereGeometry( 1, 32, 32 );
 		// 		var shader = FresnelShader;
@@ -234,7 +234,7 @@ geometry.computeLineDistances();
 
 
 		var spheres = new Array(10).fill(null).map(function() {
-			return new THREE.TorusGeometry(.8, 0.1, 64, 16 );
+			return new THREE.TorusGeometry(.2, .6, 32, 32);
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material);
