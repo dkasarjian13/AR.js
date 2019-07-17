@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	6 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	7 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -234,7 +234,7 @@ var line = new THREE.Line(geometry, material);
 
 
 		var spheres = new Array(10).fill(null).map(function() {
-			return new THREE.TorusGeometry(.2, .6, 32, 32);
+			return new THREE.TorusGeometry(.8, 0.1, 64, 16);
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material);
