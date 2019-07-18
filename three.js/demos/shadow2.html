@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	27 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	28 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -237,7 +237,7 @@ var line = new THREE.Line(geometry, material);
 		var spheres = new Array(10).fill(null).map(function() {
 			return new THREE.TorusGeometry(.2, 0.1, 64, 16);
 			mesh.scale = (Math.random() - .5) *5;
-			spheres.rotation.x += - 0.02;	
+			//spheres.rotation.x += - 0.02;	
 			
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
@@ -253,7 +253,7 @@ var line = new THREE.Line(geometry, material);
 			sphereMesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( sphereMesh ); 
 			onRenderFcts.push(function(){
-				// mesh.rotation.x += .04;
+				 sphereMesh.rotation.x += .04;
 				 sphereMesh.position.x += - 0.01;	
 			})
 		})
@@ -262,7 +262,7 @@ var line = new THREE.Line(geometry, material);
 		directionalLight.target = mesh
 
 		onRenderFcts.push(function(){
-			mesh.rotation.x += 0.04;
+			//mesh.rotation.x += 0.04;
 			
 		})
 
