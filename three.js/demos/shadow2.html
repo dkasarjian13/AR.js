@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	15 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	16 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -235,6 +235,7 @@ var line = new THREE.Line(geometry, material);
 
 		var spheres = new Array(10).fill(null).map(function() {
 			return new THREE.TorusGeometry(.8, 0.1, 64, 16);
+			mesh.scale = (Math.random() - .5) *5;
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material);
@@ -243,9 +244,7 @@ var line = new THREE.Line(geometry, material);
 			sphereMesh.castShadow= true;
 			sphereMesh.receiveShadow = true;
 		
-        mesh.scale.x = (Math.random() - .5) *5;
-        mesh.scale.y = (Math.random() - .5) *5;
-        mesh.scale.z = (Math.random() - .5) *5;
+      
 			sphereMesh.position.y = Math.random();
 			sphereMesh.position.x = (Math.random() - .5) *5;
 			sphereMesh.position.z = (Math.random() - .5) *5;
