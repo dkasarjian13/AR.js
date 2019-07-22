@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	60 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	61 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -231,7 +231,7 @@ markerRoot.add( mesh );
 
 var geometry3 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
 var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
-var mesh3 = new THREE.Mesh (geometry2, material);
+var mesh3 = new THREE.Mesh (geometry3, material);
 mesh3.castShadow= true;
 mesh3.receiveShadow = true;
 mesh3.position.y	= 0.8
@@ -256,7 +256,6 @@ markerRoot.add( mesh3 );
 			//spheres.rotation.x += - 0.02;	
 			
 		})
-
 
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material2);
