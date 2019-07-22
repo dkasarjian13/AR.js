@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	57 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	58 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -220,20 +220,6 @@ var line = new THREE.Line(geometry, material);
 
 		markerRoot.add( mesh2 ); 
 
-		// var geometry3 = new THREE.SphereGeometry( 1, 32, 32 );
-		// 		var shader = FresnelShader;
-		// 		var material2 = new THREE.ShaderMaterial( {
-		// 			uniforms: uniforms,
-		// 			vertexShader: shader.vertexShader,
-		// 			fragmentShader: shader.fragmentShader
-		// 		} );
-		// 		var mesh3	= new THREE.Mesh( geometry3, material2 );
-		// mesh3.castShadow = true;
-		// mesh3.receiveShadow = true;
-		// mesh3.position.y	= 0.1
-		// markerRoot.add( mesh3 );
-
-
 
 		var spheres = new Array(15).fill(null).map(function() {
 			var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
@@ -243,9 +229,9 @@ var line = new THREE.Line(geometry, material);
 			
 		})
 	
-		var spheres2 = new Array(15).fill(null).map(function() {
+		var spheres2 = new Array(5).fill(null).map(function() {
 			var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
-			return new THREE.TorusGeometry(.2, 0.1, 64, 16);
+			return new THREE.TorusGeometry(.8, 0.4, 64, 16);
 			mesh.scale = (Math.random() - .5) *5;
 			//spheres.rotation.x += - 0.02;	
 			
@@ -256,9 +242,6 @@ var line = new THREE.Line(geometry, material);
 			return new THREE.Mesh (sphere, material2);
 		})
 
-		var spheresMeshes = spheres.map(function (sphere) {
-			return new THREE.Mesh (sphere, material3);
-		})
 		spheresMeshes.forEach(function(sphereMesh) {
 			sphereMesh.castShadow= true;
 			sphereMesh.receiveShadow = true;
