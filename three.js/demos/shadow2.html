@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	54 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	55 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -210,6 +210,7 @@ var line = new THREE.Line(geometry, material);
 		markerRoot.add( mesh );
 		
 		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
+		var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
 		var mesh2 = new THREE.Mesh (geometry2, material);
 		mesh2.castShadow= true;
 		mesh2.receiveShadow = true;
@@ -235,14 +236,14 @@ var line = new THREE.Line(geometry, material);
 
 
 		var spheres = new Array(15).fill(null).map(function() {
-			var material	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
+			var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
 			return new THREE.TorusGeometry(.2, 0.1, 64, 16);
 			mesh.scale = (Math.random() - .5) *5;
 			//spheres.rotation.x += - 0.02;	
 			
 		})
 		var spheresMeshes = spheres.map(function (sphere) {
-			return new THREE.Mesh (sphere, material);
+			return new THREE.Mesh (sphere, material2);
 		})
 		spheresMeshes.forEach(function(sphereMesh) {
 			sphereMesh.castShadow= true;
@@ -281,7 +282,11 @@ var line = new THREE.Line(geometry, material);
 		planeMesh.depthWrite = false;
 		planeMesh.rotation.x = -Math.PI/2
 		markerRoot.add(planeMesh);
-	})()
+	})
+	
+	
+	
+	()
 
 
 
