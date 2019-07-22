@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	48 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	49 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -209,7 +209,7 @@ var line = new THREE.Line(geometry, material);
 		mesh.position.y	= 0.1
 		markerRoot.add( mesh );
 		
-		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
+		var geometry2 = new THREE.TorusGeometry(.5, 0.2, 64, 64);
 		var mesh2 = new THREE.Mesh (geometry2, material);
 		mesh2.castShadow= true;
 		mesh2.receiveShadow = true;
@@ -234,8 +234,8 @@ var line = new THREE.Line(geometry, material);
 
 
 
-		var spheres = new Array(30).fill(null).map(function() {
-			return new THREE.TorusGeometry(.2, 0.1, 64, 16);
+		var spheres = new Array(10).fill(null).map(function() {
+			return new THREE.TorusGeometry(.5, 0.2, 64, 64);
 			mesh.scale = (Math.random() - .5) *5;
 			//spheres.rotation.x += - 0.02;	
 			
@@ -244,13 +244,41 @@ var line = new THREE.Line(geometry, material);
 			return new THREE.Mesh (sphere, material);
 		})
 		spheresMeshes.forEach(function(sphereMesh) {
-			sphereMesh.castShadow= true;
-			sphereMesh.receiveShadow = true;
+			spheresMesh.castShadow= true;
+			spheresMesh.receiveShadow = true;
 		
       
-			sphereMesh.position.y = Math.random();
-			sphereMesh.position.x = (Math.random() - .5) *5;
-			sphereMesh.position.z = (Math.random() - .5) *5;
+			spheresMesh.position.y = Math.random();
+			spheresMesh.position.x = (Math.random() - .5) *5;
+			spheresMesh.position.z = (Math.random() - .5) *5;
+			//sphereMesh.scale.x = sphereMesh.scale.y = sphereMesh.scale.z = Math.random() * 3 + 1;
+			markerRoot.add( sphereMesh ); 
+			onRenderFcts.push(function(){
+				 sphereMesh.rotation.x += .04;
+				//  sphereMesh.position.x = Math.random() * 2 - 1;
+				// sphereMesh.position.y = Math.random() * 2 - 1;
+				// sphereMesh.position.z = Math.random() * 2 - 1; 	
+			})
+		})
+
+		var spheres2 = new Array(10).fill(null).map(function() {
+			return new THREE.TorusGeometry(.2, 0.1, 64, 16);
+			var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
+			mesh.scale = (Math.random() - .5) *5;
+			//spheres.rotation.x += - 0.02;	
+			
+		})
+		var spheres2Meshes = spheres.map(function (sphere) {
+			return new THREE.Mesh (sphere, material2);
+		})
+		spheres2Meshes.forEach(function(sphereMesh) {
+			spheres2Mesh.castShadow= true;
+			spheres2Mesh.receiveShadow = true;
+		
+      
+			spheres2Mesh.position.y = Math.random();
+			spheres2Mesh.position.x = (Math.random() - .5) *5;
+			spheres2Mesh.position.z = (Math.random() - .5) *5;
 			//sphereMesh.scale.x = sphereMesh.scale.y = sphereMesh.scale.z = Math.random() * 3 + 1;
 			markerRoot.add( sphereMesh ); 
 			onRenderFcts.push(function(){
