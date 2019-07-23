@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	77 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	78 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -169,6 +169,9 @@ renderer.shadowMap.enabled = true;
 		var geometry = new THREE.TorusGeometry( .8, 0.2, 64, 64 );
 		var material	= new THREE.MeshLambertMaterial({emissive: 0x172fad});
 		material.opacity = 0.8;
+		// var torus = new THREE.Mesh( geometry, material );
+		// scene.add( torus );
+		var mesh	= new THREE.Mesh( geometry, material );
 		mesh.castShadow = true;
 		mesh.receiveShadow = true;
 		mesh.position.y	= 0.1
