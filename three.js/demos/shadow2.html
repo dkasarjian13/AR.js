@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	83 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	84 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -176,7 +176,7 @@ renderer.shadowMap.enabled = true;
 		markerRoot.add( mesh );
 		
 
-		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
+		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 64);
 		var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
 		var mesh2 = new THREE.Mesh (geometry2, material);
 	visible = false;
@@ -188,7 +188,7 @@ renderer.shadowMap.enabled = true;
 
 		markerRoot.add( mesh2 ); 
 
-		var geometry3 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
+		var geometry3 = new THREE.TorusGeometry(.2, 0.1, 64, 64);
 		var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
 		var mesh3 = new THREE.Mesh (geometry3, material3);
 		mesh3.castShadow= true;
@@ -199,6 +199,19 @@ renderer.shadowMap.enabled = true;
 		mesh3.position.z	= 0.2
 
 		markerRoot.add( mesh3 ); 
+
+		var geometry4 = new THREE.TorusGeometry(1.2, 0.3, 64, 64);
+		var material4	= new THREE.MeshLambertMaterial({emissive: 0xff47});
+		var mesh4 = new THREE.Mesh (geometry4, material4);
+		mesh4.castShadow= true;
+	visible = false;
+		mesh4.receiveShadow = true;
+		mesh4.position.y	= 0.2
+		mesh4.position.x	= 10.2
+		mesh4.position.z	= 0.2
+
+		markerRoot.add( mesh3 ); 
+
 
 
 //-------------------------
@@ -282,6 +295,59 @@ renderer.shadowMap.enabled = true;
 	
 	()
 
+
+//-------------------------
+
+var toruses3 = new Array(5).fill(null).map(function() {
+			var material4	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
+			return new THREE.TorusGeometry(.8, .4, 64, 64);
+			mesh.scale = (Math.random() - .8) *5;
+			
+		})
+	
+		var toruses3Meshes = toruses3.map(function (torus3) {
+			return new THREE.Mesh (torus3, material4);
+		})
+
+		toruses3Meshes.forEach(function(torus3Mesh) {
+			torus3Mesh.castShadow= true;
+			torus3Mesh.receiveShadow = true;
+		
+      
+			torus3Mesh.position.y = Math.random();
+			torus3Mesh.position.x = (Math.random() - .8) *5;
+			torus3Mesh.position.z = (Math.random() - .8) *5;
+			markerRoot.add( torus3Mesh ); 
+			onRenderFcts.push(function(){
+			torus2Mesh.rotation.y += .08;	
+			})
+		})
+
+		
+		// point the directionalLight to the marker
+		directionalLight.target = mesh
+
+		onRenderFcts.push(function(){
+			mesh.rotation.x += 0.02;
+			mesh.scale = Math.random();
+			
+		})
+
+		// add a transparent ground-plane shadow-receiver
+		var material = new THREE.ShadowMaterial();
+		material.opacity = 0.7; //! bug in threejs. can't set in constructor
+
+		var geometry = new THREE.PlaneGeometry(3, 3)
+		var planeMesh = new THREE.Mesh( geometry, material);
+		planeMesh.receiveShadow = true;
+		planeMesh.depthWrite = false;
+		planeMesh.rotation.x = -Math.PI/2
+		markerRoot.add(planeMesh);
+	})
+	
+	
+	
+	()
 
 
 	//////////////////////////////////////////////////////////////////////////////////
