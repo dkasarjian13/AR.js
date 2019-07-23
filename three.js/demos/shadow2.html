@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	70 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	71 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -178,11 +178,11 @@ renderer.shadowMap.enabled = true;
 		markerRoot.add( mesh );
 		
 
-var line = new THREE.Line(geometry, material);
+// var line = new THREE.Line(geometry, material);
 
 
 
-var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
+		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
 		var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
 		var mesh2 = new THREE.Mesh (geometry2, material);
 		mesh2.castShadow= true;
@@ -193,16 +193,16 @@ var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
 
 		markerRoot.add( mesh2 ); 
 
-var geometry3 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
-var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
-var mesh3 = new THREE.Mesh (geometry3, material3);
-mesh3.castShadow= true;
-mesh3.receiveShadow = true;
-mesh3.position.y	= 0.8
-mesh3.position.x	= 0.3
-mesh3.position.z	= 0.5
+		var geometry3 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
+		var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
+		var mesh3 = new THREE.Mesh (geometry3, material3);
+		mesh3.castShadow= true;
+		mesh3.receiveShadow = true;
+		mesh3.position.y	= 0.8
+		mesh3.position.x	= 0.3
+		mesh3.position.z	= 0.5
 
-markerRoot.add( mesh3 ); 
+		markerRoot.add( mesh3 ); 
 
 
 		var spheres = new Array(15).fill(null).map(function() {
