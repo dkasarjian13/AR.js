@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	87 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	88 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -273,9 +273,9 @@ renderer.shadowMap.enabled = true;
 
 		//------------------------- toruses3
 
-		var toruses3 = new Array(15).fill(null).map(function() {
+		var toruses3 = new Array(5).fill(null).map(function() {
 			var material4	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
-			return new THREE.TorusGeometry(.4, .2, 64, 64);
+			return new THREE.TorusGeometry(.5, .25, 64, 64);
 			mesh.scale = (Math.random() - .5) *5;
 			
 		})
@@ -294,13 +294,13 @@ renderer.shadowMap.enabled = true;
 			torus3Mesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( torus3Mesh ); 
 			onRenderFcts.push(function(){
-			torus3Mesh.rotation.y += .08;	
+			torus3Mesh.rotation.y += - .02;	
 			})
 		})
 
 		
 		// point the directionalLight to the marker
-		directionalLight.target = mesh
+		directionalLight.target = mesh, mesh2, mesh3, mesh4
 
 		onRenderFcts.push(function(){
 			mesh.rotation.x += 0.02;
