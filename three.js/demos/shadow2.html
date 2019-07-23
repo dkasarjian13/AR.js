@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	63 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	64 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -183,31 +183,13 @@ renderer.shadowMap.enabled = true;
 		var torus = new THREE.Mesh( geometry, material );
 		scene.add( torus );
 
-	// 		var spriteMaterial = new THREE.SpriteMaterial( 
-	// { 
-	// 	map: new THREE.ImageUtils.loadTexture( '../images/glow.png' ), 
-	// 	useScreenCoordinates: false, alignment: THREE.SpriteAlignment.center,
-	// 	color: 0x0000ff, transparent: false, blending: THREE.AdditiveBlending
-	// });
-	// var sprite = new THREE.Sprite( spriteMaterial );
-	// sprite.scale.set(.8, .1, 1.0);
-	// mesh.add(sprite); // this centers the glow at the mesh
+// var line = new THREE.Line(geometry, material);
 
-			// var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16); // make it slightly larger for better view
-			//var shader = FresnelShader;
-		// var material	= new THREE.MeshNormalMaterial();
-		
-
-		// var material = new THREE.LineDashedMaterial({dashSize: 2, gapSize: 2});
-//geometry.computeLineDistances();
-
-var line = new THREE.Line(geometry, material);
-
-		var mesh	= new THREE.Mesh( geometry, material );
-		mesh.castShadow = true;
-		mesh.receiveShadow = true;
-		mesh.position.y	= 0.1
-		markerRoot.add( mesh );
+// 		var mesh	= new THREE.Mesh( geometry, material );
+// 		mesh.castShadow = true;
+// 		mesh.receiveShadow = true;
+// 		mesh.position.y	= 0.1
+// 		markerRoot.add( mesh );
 		
 		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
 		var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
