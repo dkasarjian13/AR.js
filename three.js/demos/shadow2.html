@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	109  <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	110  <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -178,6 +178,7 @@ renderer.shadowMap.enabled = true;
 
 		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 64);
 		var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
+		material2.opacity = 0.8;
 		var mesh2 = new THREE.Mesh (geometry2, material);
 	visible = false;
 		mesh2.castShadow= true;
@@ -190,6 +191,7 @@ renderer.shadowMap.enabled = true;
 
 		var geometry3 = new THREE.TorusGeometry(.2, 0.1, 64, 64);
 		var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
+		material3.opacity = 0.8;
 		var mesh3 = new THREE.Mesh (geometry3, material3);
 		mesh3.castShadow= true;
 	visible = false;
@@ -201,7 +203,9 @@ renderer.shadowMap.enabled = true;
 		markerRoot.add( mesh3 ); 
 
 		var geometry4 = new THREE.TorusGeometry(1.2, 0.3, 64, 64);
+		
 		var material4	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
+		material4.opacity = 0.8;
 		var mesh4 = new THREE.Mesh (geometry4, material4);
 		mesh4.castShadow= true;
 	visible = false;
@@ -215,6 +219,7 @@ renderer.shadowMap.enabled = true;
 
 		var geometry5 = new THREE.TorusGeometry(1.2, 0.3, 64, 64);
 		var material5	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
+		material5.opacity = 0.8;
 		var mesh5 = new THREE.Mesh (geometry5, material5);
 		mesh4.castShadow= true;
 	visible = false;
@@ -259,6 +264,7 @@ renderer.shadowMap.enabled = true;
 
 		var toruses2 = new Array(15).fill(null).map(function() {
 			var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
+			material3.opacity = 0.8;
 			return new THREE.TorusGeometry(.05, .025, 64, 64);
 			mesh.scale = (Math.random() - .5) *5;
 			
@@ -323,7 +329,7 @@ renderer.shadowMap.enabled = true;
 			
 		})
 	
-		var toruses3MMeshes = toruses3M.map(function (torus3) {
+		var toruses3MMeshes = toruses3M.map(function (torus3M) {
 			return new THREE.Mesh (torus3M, material5);
 		})
 
