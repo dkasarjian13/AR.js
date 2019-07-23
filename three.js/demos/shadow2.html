@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	106  <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	107  <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -237,6 +237,7 @@ renderer.shadowMap.enabled = true;
 			torusMesh.position.z = (Math.random() - .8) *5;
 			markerRoot.add( torusMesh ); 
 			onRenderFcts.push(function(){
+				torusMesh.position.z += 0.03;
 			torusMesh.rotation.x += .04;	
 			})
 		})
@@ -266,6 +267,7 @@ renderer.shadowMap.enabled = true;
 			markerRoot.add( torus2Mesh ); 
 			onRenderFcts.push(function(){
 				torus2Mesh.position.x += 0.01;
+				torus2Mesh.position.z += 0.03;
 			//torus2Mesh.position.x = (Math.random() - .2) *6;
 			torus2Mesh.rotation.y += .08;	
 			})
