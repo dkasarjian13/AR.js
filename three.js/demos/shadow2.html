@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	102  <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	103  <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -265,18 +265,7 @@ renderer.shadowMap.enabled = true;
 			torus2Mesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( torus2Mesh ); 
 			onRenderFcts.push(function(){
-			torus2Mesh.position.x = (Math.random() - .2) *6;
-			segDur = .5;// duration of each "segment" of random motion
-			minVal = [0.1*thisComp.width, 0.1*thisComp.height];
-			maxVal = [0.9*thisComp.width, 0.9*thisComp.height];
-
-			seed = Math.floor(time/segDur);
-			segStart = seed*segDur;
-			seedRandom(seed,true);
-			startVal =  random(minVal,maxVal);
-			seedRandom(seed+1,true);
-			endVal = random(minVal,maxVal);
-			ease(time,segStart,segStart + segDur, startVal, endVal);
+			//torus2Mesh.position.x = (Math.random() - .2) *6;
 			torus2Mesh.rotation.y += .08;	
 			})
 		})
@@ -302,11 +291,11 @@ renderer.shadowMap.enabled = true;
 		
       
 			torus3Mesh.position.y = (Math.random() - .8) *5;
-			torus3Mesh.position.x = (Math.random() - .8) *5;
+			torus3Mesh.position.x = (Math.random() - .8) *7;
 			torus3Mesh.position.z = (Math.random() - .8) *5;
 			markerRoot.add( torus3Mesh ); 
 			onRenderFcts.push(function(){
-			torus3Mesh.rotation.y += - .02;	
+			torus3Mesh.rotation.y += - .01;	
 			})
 		})
 
