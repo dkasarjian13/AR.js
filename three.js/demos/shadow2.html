@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	85 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	86 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -210,11 +210,11 @@ renderer.shadowMap.enabled = true;
 		mesh4.position.x	= 10.2
 		mesh4.position.z	= 0.2
 
-		markerRoot.add( mesh4 ); 
+		markerRoot.add( mesh3 ); 
 
 
 
-//------------------------- toruses1
+//-------------------------
 
 		var toruses = new Array(15).fill(null).map(function() {
 			var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
@@ -242,7 +242,7 @@ renderer.shadowMap.enabled = true;
 		})
 
 
-//------------------------- toruses2
+//-------------------------
 
 		var toruses2 = new Array(15).fill(null).map(function() {
 			var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
@@ -264,35 +264,6 @@ renderer.shadowMap.enabled = true;
 			torus2Mesh.position.x = (Math.random() - .5) *5;
 			torus2Mesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( torus2Mesh ); 
-			onRenderFcts.push(function(){
-			torus2Mesh.rotation.y += .08;	
-			})
-		})
-
-
-
-//------------------------- toruses3
-
-var toruses3 = new Array(5).fill(null).map(function() {
-			var material4	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
-			return new THREE.TorusGeometry(.8, .4, 64, 64);
-			mesh.scale = (Math.random() - .8) *5;
-			
-		})
-	
-		var toruses3Meshes = toruses3.map(function (torus3) {
-			return new THREE.Mesh (torus3, material4);
-		})
-
-		toruses3Meshes.forEach(function(torus3Mesh) {
-			torus3Mesh.castShadow= true;
-			torus3Mesh.receiveShadow = true;
-		
-      
-			torus3Mesh.position.y = Math.random();
-			torus3Mesh.position.x = (Math.random() - .8) *5;
-			torus3Mesh.position.z = (Math.random() - .8) *5;
-			markerRoot.add( torus3Mesh ); 
 			onRenderFcts.push(function(){
 			torus2Mesh.rotation.y += .08;	
 			})
@@ -323,6 +294,7 @@ var toruses3 = new Array(5).fill(null).map(function() {
 	
 	
 	()
+
 
 
 	//////////////////////////////////////////////////////////////////////////////////
