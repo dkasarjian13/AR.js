@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	101  <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	102  <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -266,7 +266,17 @@ renderer.shadowMap.enabled = true;
 			markerRoot.add( torus2Mesh ); 
 			onRenderFcts.push(function(){
 			torus2Mesh.position.x = (Math.random() - .2) *6;
-			segMin = .3;
+			segDur = .5;// duration of each "segment" of random motion
+			minVal = [0.1*thisComp.width, 0.1*thisComp.height];
+			maxVal = [0.9*thisComp.width, 0.9*thisComp.height];
+
+			seed = Math.floor(time/segDur);
+			segStart = seed*segDur;
+			seedRandom(seed,true);
+			startVal =  random(minVal,maxVal);
+			seedRandom(seed+1,true);
+			endVal = random(minVal,maxVal);
+			ease(time,segStart,segStart + segDur, startVal, endVal);
 			torus2Mesh.rotation.y += .08;	
 			})
 		})
