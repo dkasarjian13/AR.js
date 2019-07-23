@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	66 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	67 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -161,17 +161,6 @@ renderer.shadowMap.enabled = true;
 	var markerRoot = new THREE.Group
 	scene.add(markerRoot);
 	
-	//add a torus knot
-	// var geometry	= new THREE.CubeGeometry(1,1,1);
-	// var material	= new THREE.MeshNormalMaterial({
-	// 	transparent : true,
-	// 	opacity: 0.5,
-	// 	side: THREE.DoubleSide
-	// });
-	// var mesh	= new THREE.Mesh( geometry, material );
-	// mesh.position.y	= geometry.parameters.height/2
-	// markerRoot.add( mesh );
-
 
 	
 
@@ -183,14 +172,6 @@ renderer.shadowMap.enabled = true;
 		var torus = new THREE.Mesh( geometry, material );
 		scene.add( torus );
 
-// var line = new THREE.Line(geometry, material);
-
-// 		var mesh	= new THREE.Mesh( geometry, material );
-// 		mesh.castShadow = true;
-// 		mesh.receiveShadow = true;
-// 		mesh.position.y	= 0.1
-// 		markerRoot.add( mesh );
-var torus = new Array(15).fill(null).map(function() {
 		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
 		var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
 		var mesh2 = new THREE.Mesh (geometry2, material);
@@ -202,10 +183,7 @@ var torus = new Array(15).fill(null).map(function() {
 
 		markerRoot.add( mesh2 ); 
 
-	})
-
-
-		var line = new THREE.Line(geometry, material);
+var line = new THREE.Line(geometry, material);
 
 var mesh	= new THREE.Mesh( geometry, material );
 mesh.castShadow = true;
@@ -233,7 +211,6 @@ markerRoot.add( mesh3 );
 			
 		})
 	
-
 		var spheresMeshes = spheres.map(function (sphere) {
 			return new THREE.Mesh (sphere, material2);
 		})
@@ -246,40 +223,12 @@ markerRoot.add( mesh3 );
 			sphereMesh.position.y = Math.random();
 			sphereMesh.position.x = (Math.random() - .5) *5;
 			sphereMesh.position.z = (Math.random() - .5) *5;
-			//sphereMesh.scale.x = sphereMesh.scale.y = sphereMesh.scale.z = Math.random() * 3 + 1;
 			markerRoot.add( sphereMesh ); 
 			onRenderFcts.push(function(){
-				 sphereMesh.rotation.x += .04;
-				//  sphereMesh.position.x = Math.random() * 2 - 1;
-				// sphereMesh.position.y = Math.random() * 2 - 1;
-				// sphereMesh.position.z = Math.random() * 2 - 1; 	
+				 sphereMesh.rotation.x += .04;	
 			})
 		})
 
-
-
-
-		var spheresMeshes2 = spheres.map(function (sphere2) {
-			return new THREE.Mesh (sphere2, material3);
-		})
-
-		spheresMeshes.forEach(function(sphereMesh2) {
-			sphereMesh2.castShadow= true;
-			sphereMesh2.receiveShadow = true;
-		
-      
-			sphereMesh2.position.y = Math.random();
-			sphereMesh2.position.x = (Math.random() - .5) *5;
-			sphereMesh2.position.z = (Math.random() - .5) *5;
-			//sphereMesh.scale.x = sphereMesh.scale.y = sphereMesh.scale.z = Math.random() * 3 + 1;
-			markerRoot.add( sphereMesh2 ); 
-			onRenderFcts.push(function(){
-				 sphereMesh2.rotation.x += .04;
-				//  sphereMesh.position.x = Math.random() * 2 - 1;
-				// sphereMesh.position.y = Math.random() * 2 - 1;
-				// sphereMesh.position.z = Math.random() * 2 - 1; 	
-			})
-		})
 		
 		// point the directionalLight to the marker
 		directionalLight.target = mesh
