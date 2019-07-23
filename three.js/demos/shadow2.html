@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	71 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	72 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -166,7 +166,7 @@ renderer.shadowMap.enabled = true;
 
 
 	(function(){
-		var geometry = new THREE.TorusGeometry( .5, 0.2, 64, 64 );
+		var geometry = new THREE.TorusGeometry( .8, 0.2, 64, 64 );
 		var material	= new THREE.MeshLambertMaterial({emissive: 0x172fad});
 		material.opacity = 0.8;
 		var torus = new THREE.Mesh( geometry, material );
@@ -178,7 +178,6 @@ renderer.shadowMap.enabled = true;
 		markerRoot.add( mesh );
 		
 
-// var line = new THREE.Line(geometry, material);
 
 
 
@@ -205,29 +204,28 @@ renderer.shadowMap.enabled = true;
 		markerRoot.add( mesh3 ); 
 
 
-		var spheres = new Array(15).fill(null).map(function() {
+		var toruses = new Array(15).fill(null).map(function() {
 			var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
 			return new THREE.TorusGeometry(.2, 0.1, 64, 16);
 			mesh.scale = (Math.random() - .5) *5;
-			//spheres.rotation.x += - 0.02;	
 			
 		})
 	
-		var spheresMeshes = spheres.map(function (sphere) {
-			return new THREE.Mesh (sphere, material2);
+		var torusesMeshes = toruses.map(function (torus) {
+			return new THREE.Mesh (torus, material2);
 		})
 
-		spheresMeshes.forEach(function(sphereMesh) {
-			sphereMesh.castShadow= true;
-			sphereMesh.receiveShadow = true;
+		torusesMeshes.forEach(function(torusMesh) {
+			torusMesh.castShadow= true;
+			torusMesh.receiveShadow = true;
 		
       
-			sphereMesh.position.y = Math.random();
-			sphereMesh.position.x = (Math.random() - .5) *5;
-			sphereMesh.position.z = (Math.random() - .5) *5;
+			torusMesh.position.y = Math.random();
+			torusMesh.position.x = (Math.random() - .5) *5;
+			torusMesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( sphereMesh ); 
 			onRenderFcts.push(function(){
-				 sphereMesh.rotation.x += .04;	
+			torusMesh.rotation.x += .04;	
 			})
 		})
 
