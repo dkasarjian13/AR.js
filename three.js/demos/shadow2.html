@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	73 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	74 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -226,6 +226,33 @@ renderer.shadowMap.enabled = true;
 			markerRoot.add( torusMesh ); 
 			onRenderFcts.push(function(){
 			torusMesh.rotation.x += .04;	
+			})
+		})
+
+
+
+		var toruses2 = new Array(15).fill(null).map(function() {
+			var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
+			return new THREE.TorusGeometry(.2, 0.1, 64, 16);
+			mesh.scale = (Math.random() - .5) *5;
+			
+		})
+	
+		var toruses2Meshes = toruses2.map(function (torus2) {
+			return new THREE.Mesh (torus2, material3);
+		})
+
+		toruses2Meshes.forEach(function(torus2Mesh) {
+			torus2Mesh.castShadow= true;
+			torus2Mesh.receiveShadow = true;
+		
+      
+			torus2Mesh.position.y = Math.random();
+			torus2Mesh.position.x = (Math.random() - .5) *5;
+			torus2Mesh.position.z = (Math.random() - .5) *5;
+			markerRoot.add( torus2Mesh ); 
+			onRenderFcts.push(function(){
+			torus2Mesh.rotation.x += .04;	
 			})
 		})
 
