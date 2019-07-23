@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	78 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
+	79 <a href="https://twitter.com/snigelpaogat" target='_blank'></a> and 
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -169,17 +169,12 @@ renderer.shadowMap.enabled = true;
 		var geometry = new THREE.TorusGeometry( .8, 0.2, 64, 64 );
 		var material	= new THREE.MeshLambertMaterial({emissive: 0x172fad});
 		material.opacity = 0.8;
-		// var torus = new THREE.Mesh( geometry, material );
-		// scene.add( torus );
 		var mesh	= new THREE.Mesh( geometry, material );
 		mesh.castShadow = true;
 		mesh.receiveShadow = true;
 		mesh.position.y	= 0.1
 		markerRoot.add( mesh );
 		
-
-
-
 
 		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 16);
 		var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
@@ -197,12 +192,14 @@ renderer.shadowMap.enabled = true;
 		var mesh3 = new THREE.Mesh (geometry3, material3);
 		mesh3.castShadow= true;
 		mesh3.receiveShadow = true;
-		mesh3.position.y	= 0.8
-		mesh3.position.x	= 0.3
-		mesh3.position.z	= 0.5
+		mesh3.position.y	= 0.2
+		mesh3.position.x	= 0.2
+		mesh3.position.z	= 0.2
 
 		markerRoot.add( mesh3 ); 
 
+
+//-------------------------
 
 		var toruses = new Array(15).fill(null).map(function() {
 			var material2	= new THREE.MeshLambertMaterial({emissive: 0xff5b00});
@@ -234,7 +231,7 @@ renderer.shadowMap.enabled = true;
 
 		var toruses2 = new Array(15).fill(null).map(function() {
 			var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
-			return new THREE.TorusGeometry(.05, 0.1, 64, 64);
+			return new THREE.TorusGeometry(.05, .05, 64, 64);
 			mesh.scale = (Math.random() - .5) *5;
 			
 		})
