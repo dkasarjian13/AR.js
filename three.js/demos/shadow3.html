@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	08  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
+	9  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -176,7 +176,7 @@ renderer.shadowMap.enabled = true;
 		markerRoot.add( mesh );
 		
 		var geometry2 = new THREE.TorusKnotGeometry(.2, 0.1, 64, 64);
-		var material2	= new THREE.MeshPhongMaterial({color: 0x464747, emissive: 0x0, specular: 0xff0000, shininess: 100 });
+		var material2	= new THREE.MeshPhongMaterial({color: 0xce2121, emissive: 0x0, specular: 0x3a3a3a, shininess: 50 });
 		var mesh2 = new THREE.Mesh (geometry2, material);
 	visible = false;
 		mesh2.castShadow= true;
@@ -233,8 +233,7 @@ renderer.shadowMap.enabled = true;
 //------------------------- toruses
 
 		var toruses = new Array(15).fill(null).map(function() {
-			var material2	= new THREE.MeshPhongMaterial({color: 0x464747, emissive: 0x0, specular: 0xff0000, shininess: 100 });
-			return new THREE.TorusKnotGeometry(.2, 0.1, 64, 64);
+            var material2	= new THREE.MeshPhongMaterial({color: 0xce2121, emissive: 0x0, specular: 0x3a3a3a, shininess: 50 });			return new THREE.TorusKnotGeometry(.2, 0.1, 64, 64);
 			mesh.scale = (Math.random() - .5) *5;
 			
 		})
