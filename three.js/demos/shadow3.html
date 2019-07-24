@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	17  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
+	18  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -167,7 +167,7 @@ renderer.shadowMap.enabled = true;
 
 	(function(){
 		var geometry = new THREE.TorusKnotGeometry( .5, 0.2, 64, 30 );
-		var material	= new THREE.MeshStandardMaterial({color: 0x3701d1, emissive: 0x0, roughness: 0.33, metalness: 0.95, flatShading: true});
+		var material	= new THREE.MeshPhongMaterial({color: 0x3701d1, emissive: 0x0, specular: 0xff00a8, shininess: 100, flatShading: true});
 		material.opacity = 0.9;
 		var mesh	= new THREE.Mesh( geometry, material );
 		mesh.castShadow = true;
