@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	03  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
+	04  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -166,27 +166,17 @@ renderer.shadowMap.enabled = true;
 
 
 	(function(){
-		var geometry = new THREE.TorusGeometry( .8, 0.2, 64, 64 );
-		var material	= new THREE.MeshLambertMaterial({emissive: 0x172fad});
-		material.opacity = 0.8;
-		var mesh	= new THREE.Mesh( geometry, material );
-		mesh.castShadow = true;
-		mesh.receiveShadow = true;
-		mesh.position.y	= 0.1
-		markerRoot.add( mesh );
+		// var geometry = new THREE.TorusGeometry( .8, 0.2, 64, 64 );
+		// var material	= new THREE.MeshLambertMaterial({emissive: 0x172fad});
+		// material.opacity = 0.8;
+		// var mesh	= new THREE.Mesh( geometry, material );
+		// mesh.castShadow = true;
+		// mesh.receiveShadow = true;
+		// mesh.position.y	= 0.1
+		// markerRoot.add( mesh );
 		
-        // var geometry2 = new THREE.SphereBufferGeometry(.2,32,32);
-		// var mesh2 = new THREE.Mesh (geometry2, material);
-		// mesh2.castShadow= true;
-		// mesh2.receiveShadow = true;
-		// mesh2.position.y	= 0.8
-		// mesh2.position.x	= 0.3
-		// mesh2.position.z	= 0.5
-        // markerRoot.add( mesh2 ); 
-        
 		var geometry2 = new THREE.TorusGeometry(.2, 0.1, 64, 64);
 		var material2	= new THREE.MeshPhongMaterial({color: 0xff2d00, emissive: 0x0, roughness: .5, metalness: 1 });
-		material2.opacity = 0.8;
 		var mesh2 = new THREE.Mesh (geometry2, material);
 	visible = false;
 		mesh2.castShadow= true;
@@ -197,46 +187,46 @@ renderer.shadowMap.enabled = true;
 
 		markerRoot.add( mesh2 ); 
 
-		var geometry3 = new THREE.TorusGeometry(.2, 0.1, 64, 64);
-		var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
-		material3.opacity = 0.8;
-		var mesh3 = new THREE.Mesh (geometry3, material3);
-		mesh3.castShadow= true;
-	visible = false;
-		mesh3.receiveShadow = true;
-		mesh3.position.y	= 0.2
-		mesh3.position.x	= 10.2
-		mesh3.position.z	= 0.2
+	// 	var geometry3 = new THREE.TorusGeometry(.2, 0.1, 64, 64);
+	// 	var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
+	// 	material3.opacity = 0.8;
+	// 	var mesh3 = new THREE.Mesh (geometry3, material3);
+	// 	mesh3.castShadow= true;
+	// visible = false;
+	// 	mesh3.receiveShadow = true;
+	// 	mesh3.position.y	= 0.2
+	// 	mesh3.position.x	= 10.2
+	// 	mesh3.position.z	= 0.2
 
-		markerRoot.add( mesh3 ); 
+	// 	markerRoot.add( mesh3 ); 
 
-		var geometry4 = new THREE.TorusGeometry(1.2, 0.3, 64, 64);
+	// 	var geometry4 = new THREE.TorusGeometry(1.2, 0.3, 64, 64);
 		
-		var material4	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
-		material4.opacity = 0.8;
-		var mesh4 = new THREE.Mesh (geometry4, material4);
-		mesh4.castShadow= true;
-	visible = false;
-		mesh4.receiveShadow = true;
-		mesh4.position.y	= 0.2
-		mesh4.position.x	= 10.2
-		mesh4.position.z	= 0.2
+	// 	var material4	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
+	// 	material4.opacity = 0.8;
+	// 	var mesh4 = new THREE.Mesh (geometry4, material4);
+	// 	mesh4.castShadow= true;
+	// visible = false;
+	// 	mesh4.receiveShadow = true;
+	// 	mesh4.position.y	= 0.2
+	// 	mesh4.position.x	= 10.2
+	// 	mesh4.position.z	= 0.2
 
-		markerRoot.add( mesh4 ); 
+	// 	markerRoot.add( mesh4 ); 
 
 
-		var geometry5 = new THREE.TorusGeometry(1.2, 0.3, 64, 64);
-		var material5	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
-		material5.opacity = 0.8;
-		var mesh5 = new THREE.Mesh (geometry5, material5);
-		mesh4.castShadow= true;
-	visible = false;
-		mesh5.receiveShadow = true;
-		mesh5.position.y	= 0.2
-		mesh5.position.x	= 10.2
-		mesh5.position.z	= 0.2
+	// 	var geometry5 = new THREE.TorusGeometry(1.2, 0.3, 64, 64);
+	// 	var material5	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
+	// 	material5.opacity = 0.8;
+	// 	var mesh5 = new THREE.Mesh (geometry5, material5);
+	// 	mesh4.castShadow= true;
+	// visible = false;
+	// 	mesh5.receiveShadow = true;
+	// 	mesh5.position.y	= 0.2
+	// 	mesh5.position.x	= 10.2
+	// 	mesh5.position.z	= 0.2
 
-		markerRoot.add( mesh5 ); 
+	// 	markerRoot.add( mesh5 ); 
 
 
 
@@ -270,90 +260,89 @@ renderer.shadowMap.enabled = true;
 
 //------------------------- toruses2
 
-		var toruses2 = new Array(15).fill(null).map(function() {
-			var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
-			material3.opacity = 0.8;
-			return new THREE.TorusGeometry(.05, .025, 64, 64);
-			mesh.scale = (Math.random() - .5) *5;
+		// var toruses2 = new Array(15).fill(null).map(function() {
+		// 	var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
+		// 	return new THREE.TorusGeometry(.05, .025, 64, 64);
+		// 	mesh.scale = (Math.random() - .5) *5;
 			
-		})
+		// })
 	
-		var toruses2Meshes = toruses2.map(function (torus2) {
-			return new THREE.Mesh (torus2, material3);
-		})
+		// var toruses2Meshes = toruses2.map(function (torus2) {
+		// 	return new THREE.Mesh (torus2, material3);
+		// })
 
-		toruses2Meshes.forEach(function(torus2Mesh) {
-			torus2Mesh.castShadow= true;
-			torus2Mesh.receiveShadow = true;
+		// toruses2Meshes.forEach(function(torus2Mesh) {
+		// 	torus2Mesh.castShadow= true;
+		// 	torus2Mesh.receiveShadow = true;
 		
       
-			torus2Mesh.position.y = Math.random();
-			torus2Mesh.position.x = (Math.random() - .5) *5;
-			torus2Mesh.position.z = (Math.random() - .5) *5;
-			markerRoot.add( torus2Mesh ); 
-			onRenderFcts.push(function(){
-			//torus2Mesh.position.x = (Math.random() - .2) *6;
-			torus2Mesh.rotation.y += .08;	
-			})
-		})
+		// 	torus2Mesh.position.y = Math.random();
+		// 	torus2Mesh.position.x = (Math.random() - .5) *5;
+		// 	torus2Mesh.position.z = (Math.random() - .5) *5;
+		// 	markerRoot.add( torus2Mesh ); 
+		// 	onRenderFcts.push(function(){
+		// 	//torus2Mesh.position.x = (Math.random() - .2) *6;
+		// 	torus2Mesh.rotation.y += .08;	
+		// 	})
+		// })
 
 
 
 		//------------------------- toruses3
 
-		var toruses3 = new Array(5).fill(null).map(function() {
-			var material4	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
-			return new THREE.TorusGeometry(.5, .25, 64, 64);
-			mesh.scale = (Math.random() - .5) *5;
+		// var toruses3 = new Array(5).fill(null).map(function() {
+		// 	var material4	= new THREE.MeshLambertMaterial({emissive: 0xad00ff});
+		// 	return new THREE.TorusGeometry(.5, .25, 64, 64);
+		// 	mesh.scale = (Math.random() - .5) *5;
 			
-		})
+		// })
 	
-		var toruses3Meshes = toruses3.map(function (torus3) {
-			return new THREE.Mesh (torus3, material4);
-		})
+		// var toruses3Meshes = toruses3.map(function (torus3) {
+		// 	return new THREE.Mesh (torus3, material4);
+		// })
 
-		toruses3Meshes.forEach(function(torus3Mesh) {
-			torus3Mesh.castShadow= true;
-			torus3Mesh.receiveShadow = true;
+		// toruses3Meshes.forEach(function(torus3Mesh) {
+		// 	torus3Mesh.castShadow= true;
+		// 	torus3Mesh.receiveShadow = true;
 		
       
-			torus3Mesh.position.y = (Math.random() - .8) *5;
-			torus3Mesh.position.x = (Math.random() - .8) *7;
-			torus3Mesh.position.z = (Math.random() - .8) *5;
-			markerRoot.add( torus3Mesh ); 
-			onRenderFcts.push(function(){
-			torus3Mesh.rotation.y += - .01;	
-			})
-		})
+		// 	torus3Mesh.position.y = (Math.random() - .8) *5;
+		// 	torus3Mesh.position.x = (Math.random() - .8) *7;
+		// 	torus3Mesh.position.z = (Math.random() - .8) *5;
+		// 	markerRoot.add( torus3Mesh ); 
+		// 	onRenderFcts.push(function(){
+		// 	torus3Mesh.rotation.y += - .01;	
+		// 	})
+		// })
 
 
 
 		//------------------------- toruses4
 
-		var toruses4 = new Array(5).fill(null).map(function() {
-			var material5	= new THREE.MeshLambertMaterial({emissive: 0xffb700});
-			return new THREE.TorusGeometry(1, .25, 64, 64);
-			mesh.scale = (Math.random() - .5) *5;
+		// var toruses4 = new Array(5).fill(null).map(function() {
+		// 	var material5	= new THREE.MeshLambertMaterial({emissive: 0xffb700});
+		// 	return new THREE.TorusGeometry(1, .25, 64, 64);
+		// 	mesh.scale = (Math.random() - .5) *5;
 			
-		})
+		// })
 	
-		var toruses4Meshes = toruses4.map(function (torus4) {
-			return new THREE.Mesh (torus4, material5);
-		})
+		// var toruses4Meshes = toruses4.map(function (torus4) {
+		// 	return new THREE.Mesh (torus4, material5);
+		// })
 
-		toruses4Meshes.forEach(function(torus4Mesh) {
-			torus4Mesh.castShadow= true;
-			torus4Mesh.receiveShadow = true;
+		// toruses4Meshes.forEach(function(torus4Mesh) {
+		// 	torus4Mesh.castShadow= true;
+		// 	torus4Mesh.receiveShadow = true;
 		
       
-			torus4Mesh.position.y = (Math.random() - .8) *8;
-			torus4Mesh.position.x = (Math.random() - .8) *8;
-			torus4Mesh.position.z = (Math.random() + .4) *8;
-			markerRoot.add( torus4Mesh ); 
-			onRenderFcts.push(function(){
-			torus4Mesh.rotation.y += - .01;	
-			})
-		})
+		// 	torus4Mesh.position.y = (Math.random() - .8) *8;
+		// 	torus4Mesh.position.x = (Math.random() - .8) *8;
+		// 	torus4Mesh.position.z = (Math.random() + .4) *8;
+		// 	markerRoot.add( torus4Mesh ); 
+		// 	onRenderFcts.push(function(){
+		// 	torus4Mesh.rotation.y += - .01;	
+		// 	})
+		// })
 
 		
 		// point the directionalLight to the marker
