@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	15  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
+	16  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -166,16 +166,16 @@ renderer.shadowMap.enabled = true;
 
 
 	(function(){
-		var geometry = new THREE.TorusKnotGeometry( .8, 0.2, 64, 64 );
-		var material	= new THREE.MeshStandardMaterial({color: 0x3701d1, emissive: 0x0, roughness: 0.33, metalness: 0.95});
-		material.opacity = 0.8;
+		var geometry = new THREE.TorusKnotGeometry( .5, 0.2, 64, 64 );
+		var material	= new THREE.MeshStandardMaterial({color: 0x3701d1, emissive: 0x0, roughness: 0.33, metalness: 0.95, wireframe: true});
+		material.opacity = 0.9;
 		var mesh	= new THREE.Mesh( geometry, material );
 		mesh.castShadow = true;
 		mesh.receiveShadow = true;
 		mesh.position.y	= 0.1
 		markerRoot.add( mesh );
 		
-		var geometry2 = new THREE.TorusKnotGeometry(.2, 0.1, 64, 64);
+		var geometry2 = new THREE.TorusKnotGeometry(.2, 0.08, 64, 64);
 		var material2	= new THREE.MeshPhongMaterial({color: 0x1a1a21, emissive: 0x80823, specular: 0xff7a00, shininess: 50 });
 		var mesh2 = new THREE.Mesh (geometry2, material);
 	visible = false;
@@ -234,7 +234,7 @@ renderer.shadowMap.enabled = true;
 
 		var toruses = new Array(15).fill(null).map(function() {
             var material2	= new THREE.MeshPhongMaterial({color: 0x1a1a21, emissive: 0x80823, specular: 0xff7a00, shininess: 50 });
-            return new THREE.TorusKnotGeometry(.2, 0.1, 64, 64);
+            return new THREE.TorusKnotGeometry(.2, 0.08, 64, 64);
 			mesh.scale = (Math.random() - .5) *5;
 			
 		})
@@ -260,31 +260,31 @@ renderer.shadowMap.enabled = true;
 
 //------------------------- toruses2
 
-		// var toruses2 = new Array(15).fill(null).map(function() {
-		// 	var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
-		// 	return new THREE.TorusGeometry(.05, .025, 64, 64);
-		// 	mesh.scale = (Math.random() - .5) *5;
+		var toruses2 = new Array(15).fill(null).map(function() {
+			var material3	= new THREE.MeshLambertMaterial({emissive: 0xff47});
+			return new THREE.TorusGeometry(.05, .025, 64, 64);
+			mesh.scale = (Math.random() - .5) *5;
 			
-		// })
+		})
 	
-		// var toruses2Meshes = toruses2.map(function (torus2) {
-		// 	return new THREE.Mesh (torus2, material3);
-		// })
+		var toruses2Meshes = toruses2.map(function (torus2) {
+			return new THREE.Mesh (torus2, material3);
+		})
 
-		// toruses2Meshes.forEach(function(torus2Mesh) {
-		// 	torus2Mesh.castShadow= true;
-		// 	torus2Mesh.receiveShadow = true;
+		toruses2Meshes.forEach(function(torus2Mesh) {
+			torus2Mesh.castShadow= true;
+			torus2Mesh.receiveShadow = true;
 		
       
-		// 	torus2Mesh.position.y = Math.random();
-		// 	torus2Mesh.position.x = (Math.random() - .5) *5;
-		// 	torus2Mesh.position.z = (Math.random() - .5) *5;
-		// 	markerRoot.add( torus2Mesh ); 
-		// 	onRenderFcts.push(function(){
-		// 	//torus2Mesh.position.x = (Math.random() - .2) *6;
-		// 	torus2Mesh.rotation.y += .08;	
-		// 	})
-		// })
+			torus2Mesh.position.y = Math.random();
+			torus2Mesh.position.x = (Math.random() - .5) *5;
+			torus2Mesh.position.z = (Math.random() - .5) *5;
+			markerRoot.add( torus2Mesh ); 
+			onRenderFcts.push(function(){
+			//torus2Mesh.position.x = (Math.random() - .2) *6;
+			torus2Mesh.rotation.y += .08;	
+			})
+		})
 
 
 
