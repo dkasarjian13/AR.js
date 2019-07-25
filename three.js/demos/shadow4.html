@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	5  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
+	  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -375,12 +375,12 @@ renderer.shadowMap.enabled = true;
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
 	//////////////////////////////////////////////////////////////////////////////////
-	var stats = new Stats();
-	document.body.appendChild( stats.dom );
+	// var stats = new Stats();
+	// document.body.appendChild( stats.dom );
 	// render the scene
 	onRenderFcts.push(function(){
 		renderer.render( scene, camera );
-		stats.update();
+		// stats.update();
 	})
 
 	// run the rendering loop
