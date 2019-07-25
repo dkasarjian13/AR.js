@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	4  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
+	5  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -276,7 +276,7 @@ renderer.shadowMap.enabled = true;
 		
       
 			torus2Mesh.position.y = Math.random();
-			torus2Mesh.position.x = (Math.random() - .5) *8;
+			torus2Mesh.position.x = (Math.random() + .2) *5;
 			torus2Mesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( torus2Mesh ); 
 			onRenderFcts.push(function(){
@@ -305,11 +305,12 @@ renderer.shadowMap.enabled = true;
 			torus3Mesh.receiveShadow = true;
 		
       
-			torus3Mesh.position.y = (Math.random() - .8) *5;
-			torus3Mesh.position.x = (Math.random() - .8) *7;
-			torus3Mesh.position.z = (Math.random() - .8) *5;
+			torus3Mesh.position.y = (Math.random() - .5) *5;
+			torus3Mesh.position.x = (Math.random() - .5) *5;
+			torus3Mesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( torus3Mesh ); 
 			onRenderFcts.push(function(){
+            torus3Mesh.position.x = .005;
 			torus3Mesh.rotation.y += - .01;	
 			})
 		})
