@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	3  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
+	4  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -248,8 +248,8 @@ renderer.shadowMap.enabled = true;
 		
       
 			torusMesh.position.y = Math.random();
-			torusMesh.position.x = (Math.random() - .8) *5;
-			torusMesh.position.z = (Math.random() - .8) *5;
+			torusMesh.position.x = (Math.random() - .5) *8;
+			torusMesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( torusMesh ); 
 			onRenderFcts.push(function(){
 			torusMesh.rotation.x += .04;	
@@ -276,11 +276,11 @@ renderer.shadowMap.enabled = true;
 		
       
 			torus2Mesh.position.y = Math.random();
-			torus2Mesh.position.x = (Math.random() - .5) *5;
+			torus2Mesh.position.x = (Math.random() - .5) *8;
 			torus2Mesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( torus2Mesh ); 
 			onRenderFcts.push(function(){
-			torus2Mesh.position.x = (Math.random() - .2) *6;
+			
 			torus2Mesh.rotation.y += .08;	
 			})
 		})
@@ -318,30 +318,30 @@ renderer.shadowMap.enabled = true;
 
 		//------------------------- toruses4
 
-		// var toruses4 = new Array(5).fill(null).map(function() {
-		// 	var material5	= new THREE.MeshLambertMaterial({emissive: 0xffb700});
-		// 	return new THREE.TorusGeometry(1, .25, 64, 64);
-		// 	mesh.scale = (Math.random() - .5) *5;
+		var toruses4 = new Array(5).fill(null).map(function() {
+            var material5	= new THREE.MeshStandardMaterial({color: 0xc14703, emissive: 0xa00202, roughness: 0.09, metalness: 0.3});
+			return new THREE.TorusGeometry(1, .25, 64, 64);
+			mesh.scale = (Math.random() - .5) *5;
 			
-		// })
+		})
 	
-		// var toruses4Meshes = toruses4.map(function (torus4) {
-		// 	return new THREE.Mesh (torus4, material5);
-		// })
+		var toruses4Meshes = toruses4.map(function (torus4) {
+			return new THREE.Mesh (torus4, material5);
+		})
 
-		// toruses4Meshes.forEach(function(torus4Mesh) {
-		// 	torus4Mesh.castShadow= true;
-		// 	torus4Mesh.receiveShadow = true;
+		toruses4Meshes.forEach(function(torus4Mesh) {
+			torus4Mesh.castShadow= true;
+			torus4Mesh.receiveShadow = true;
 		
       
-		// 	torus4Mesh.position.y = (Math.random() - .8) *8;
-		// 	torus4Mesh.position.x = (Math.random() - .8) *8;
-		// 	torus4Mesh.position.z = (Math.random() + .4) *8;
-		// 	markerRoot.add( torus4Mesh ); 
-		// 	onRenderFcts.push(function(){
-		// 	torus4Mesh.rotation.y += - .01;	
-		// 	})
-		// })
+			torus4Mesh.position.y = (Math.random() - .8) *8;
+			torus4Mesh.position.x = (Math.random() - .8) *8;
+			torus4Mesh.position.z = (Math.random() + .4) *8;
+			markerRoot.add( torus4Mesh ); 
+			onRenderFcts.push(function(){
+			torus4Mesh.rotation.y += - .01;	
+			})
+		})
 
 		
 		// point the directionalLight to the marker
