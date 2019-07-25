@@ -18,7 +18,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'><div style='position: absolute; top: 10px; width:100%; text-align: center; z-index: 1;'>
 	<a href="https://github.com/jeromeetienne/AR.js/" target="_blank"></a>
 	<br/>
-	2  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
+	3  <a href="https://twitter.com/snigelpaogat" target='_blank'></a>
 	<a href='https://twitter.com/jerome_etienne' target='_blank'></a>
 </div>
 
@@ -166,7 +166,7 @@ renderer.shadowMap.enabled = true;
 
 
 	(function(){
-		var geometry = new THREE.TorusKnotGeometry( .5, 0.2, 64, 30 );
+		var geometry = new THREE.TorusKnotGeometry( .4, 0.2, 64, 30 );
 		var material	= new THREE.MeshStandardMaterial({color: 0xc14703, emissive: 0xa00202, roughness: 0.09, metalness: 0.3});
 		material.opacity = 0.9;
 		var mesh	= new THREE.Mesh( geometry, material );
@@ -280,7 +280,7 @@ renderer.shadowMap.enabled = true;
 			torus2Mesh.position.z = (Math.random() - .5) *5;
 			markerRoot.add( torus2Mesh ); 
 			onRenderFcts.push(function(){
-			//torus2Mesh.position.x = (Math.random() - .2) *6;
+			torus2Mesh.position.x = (Math.random() - .2) *6;
 			torus2Mesh.rotation.y += .08;	
 			})
 		})
